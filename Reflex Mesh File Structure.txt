@@ -3,34 +3,34 @@
 #For example, 75 85 17 C0 = 0xc0178575 = -2.3675206
 #See also https://www.h-schmidt.net/FloatConverter/IEEE754.html which I used while reverse engineering this file format
 shootable_target_piece_9.mesh
-23 00 0A D0	#Reflex header, not relevant
-03 00 00 00	#Number of mesh divisions (essentially submeshes)
-			#Every mesh division consists of a rendering group and a projection group
-75 85 17 C0 B5 8E BB C1 12 6C F4 C1	#The combined largest negative coordinates of any vertex in this mesh
-1B DF 0D 40 4B 92 B2 C0 0B A1 81 C1	#The combined largest positive coordinates of any vertex in this mesh
-									#Think of these two as a way to roughly define the space this mesh will take up
-									#Having this (rough) estimate greatly improves performances for detecting if a player has clicked on this mesh, for example
-									#There's no need to run an expensive check against all vertices and faces if the click doesn't even land in this overarching space
-00 00 00 00 00 00 00 00 09 00 00 00	#Reflex header, not relevant
-4D 61 74 65 72 69 61 6C 42 00	#UTF-8 string "materialB"
-4D 61 74 65 72 69 61 6C 41 00	#UTF-8 string "materialA"
-4D 61 74 65 72 69 61 6C 43 00	#UTF-8 string "materialC"
-								#These strings define the material that will be assigned to each submesh. These can be hard-defined materials, like "stake" in stake.mesh,
-								#but they can also defer to the material that one might choose in the map editor by using "materialA", "materialB" and so on
-								#The number of strings is defined by the number of groups and is confined to the same limit of 8
+23 00 0A D0 #Reflex header, not relevant
+03 00 00 00 #Number of mesh divisions (essentially submeshes)
+            #Every mesh division consists of a rendering group and a projection group
+75 85 17 C0 B5 8E BB C1 12 6C F4 C1 #The combined largest negative coordinates of any vertex in this mesh
+1B DF 0D 40 4B 92 B2 C0 0B A1 81 C1 #The combined largest positive coordinates of any vertex in this mesh
+                                    #Think of these two as a way to roughly define the space this mesh will take up
+                                    #Having this (rough) estimate greatly improves performances for detecting if a player has clicked on this mesh, for example
+                                    #There's no need to run an expensive check against all vertices and faces if the click doesn't even land in this overarching space
+00 00 00 00 00 00 00 00 09 00 00 00 #Reflex header, not relevant
+4D 61 74 65 72 69 61 6C 42 00   #UTF-8 string "materialB"
+4D 61 74 65 72 69 61 6C 41 00   #UTF-8 string "materialA"
+4D 61 74 65 72 69 61 6C 43 00   #UTF-8 string "materialC"
+                                #These strings define the material that will be assigned to each submesh. These can be hard-defined materials, like "stake" in stake.mesh,
+                                #but they can also defer to the material that one might choose in the map editor by using "materialA", "materialB" and so on
+                                #The number of strings is defined by the number of groups and is confined to the same limit of 8
 #Rendering group information header (exploded)
-14 00 00 00 									#Number of vertices in the vertex table
-			30 00 00 00 						#Number of vertex references in the face table
-						1D 00 00 00 			#Bitmask that controls the attributes of each vertex in some way. In this case, 1D 00 00 00 means these vertices are used for rendering the faces
-									04 00 00 00 #Reflex header, not relevant
+14 00 00 00                                     #Number of vertices in the vertex table
+            30 00 00 00                         #Number of vertex references in the face table
+                        1D 00 00 00             #Bitmask that controls the attributes of each vertex in some way. In this case, 1D 00 00 00 means these vertices are used for rendering the faces
+                                    04 00 00 00 #Reflex header, not relevant
 #Vertex table
 #A single 1D 00 00 00 vertex (exploded)
-B8 D1 FD BF 65 09 25 C1 88 37 C7 C1 																														#3D coordinates (X,Y,Z)
-									FF FF FF FF 																											#RGBA if no material is applied,
-																																							#each channel is given as a normal byte
-												69 5B 78 BF EA EE B2 BD 17 AC 67 BE 																		#Vertex normals
-																					00 00 70 3F AA AA AA 3E 14 8E BA 3B 									#Vertex texture coordinates
-																														2A A5 6C 3F 08 46 C3 BE 00 00 80 3F #Unknown float3
+B8 D1 FD BF 65 09 25 C1 88 37 C7 C1                                                                                                                         #3D coordinates (X,Y,Z)
+                                    FF FF FF FF                                                                                                             #RGBA if no material is applied,
+                                                                                                                                                            #each channel is given as a normal byte
+                                                69 5B 78 BF EA EE B2 BD 17 AC 67 BE                                                                         #Vertex normals
+                                                                                    00 00 70 3F AA AA AA 3E 14 8E BA 3B                                     #Vertex texture coordinates
+                                                                                                                        2A A5 6C 3F 08 46 C3 BE 00 00 80 3F #Unknown float3
 EB 62 83 BF 9E 97 85 C1 58 EF C7 C1 FF FF FF FF F1 68 5C BF 63 AF 90 BE 5B 89 D8 BE 00 00 68 3F 56 55 D5 3E DB 59 DD B2 32 DB 54 3F DA 39 0E BF 00 00 80 3F 
 B7 D1 FD BF 11 8D 6F C1 BA 41 B3 C1 FF FF FF FF 34 2B 79 BF 0E 8C 02 BE A0 60 43 BE 00 00 68 3F AA AA AA 3E FE 14 76 B3 32 DB 54 3F D9 39 0E BF 00 00 80 3F 
 ED 62 83 BF 14 13 38 C1 96 32 DE C1 FF FF FF FF B4 6B 5C BF 31 4B 47 BE 9C 91 F0 BE 00 00 70 3F 56 55 D5 3E 7B 8B 8C B3 5F 83 6C 3F 13 EF C3 BE 00 00 80 3F 
@@ -55,15 +55,15 @@ FA 62 83 3F C4 A9 B5 C1 61 E6 9B C1 FF FF FF FF A3 23 5C 3F 64 2D CA BE 84 99 A5
 00 00 01 00 02 00 #A face defined to consist of vertices 0, 1 and 2 of the vertex table above
 00 00 03 00 01 00 01 00 04 00 02 00 01 00 05 00 04 00 06 00 07 00 08 00 06 00 09 00 07 00 0A 00 08 00 07 00 0A 00 0B 00 08 00 0A 00 0C 00 0B 00 0A 00 0D 00 0C 00 0E 00 03 00 00 00 0F 00 0E 00 00 00 10 00 04 00 05 00 10 00 11 00 04 00 09 00 12 00 13 00 09 00 06 00 12 00 
 #Projection group information header (exploded)
-2A 00 00 00 									#Number of vertices in the vertex table
-			F0 00 00 00 						#Number of vertex references in the face table
-						00 00 00 00 			#Bitmask that controls the attributes of each vertex in some way. In this case, 00 00 00 00 means these
-												#vertices are (apparently) used for shadow-casting and click detection
-									04 00 00 00 #Reflex header, not relevant
+2A 00 00 00                                     #Number of vertices in the vertex table
+            F0 00 00 00                         #Number of vertex references in the face table
+                        00 00 00 00             #Bitmask that controls the attributes of each vertex in some way. In this case, 00 00 00 00 means these
+                                                #vertices are (apparently) used for shadow-casting and click detection
+                                    04 00 00 00 #Reflex header, not relevant
 #Vertex table
-									#In a "projection" group like this, vertices only contain their 3D coordinates
-									#Whereas rendering vertices are divided between different groups, projection vertices are all contained in
-									#the first group for some reason
+                                    #In a "projection" group like this, vertices only contain their 3D coordinates
+                                    #Whereas rendering vertices are divided between different groups, projection vertices are all contained in
+                                    #the first group for some reason
 B8 D1 FD BF 65 09 25 C1 88 37 C7 C1 #3D coordinates (X,Y,Z)
 EB 62 83 BF 9E 97 85 C1 58 EF C7 C1 
 B7 D1 FD BF 11 8D 6F C1 BA 41 B3 C1 
