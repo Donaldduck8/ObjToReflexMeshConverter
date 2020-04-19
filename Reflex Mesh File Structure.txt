@@ -1,4 +1,4 @@
-#All numerical values in .mesh files are in little endian order
+#Most numerical values in .mesh files are in little endian order
 #Most values will be floating point numbers according to IEEE-754
 #For example, 75 85 17 C0 = 0xc0178575 = -2.3675206
 #See also https://www.h-schmidt.net/FloatConverter/IEEE754.html which I used while reverse engineering this file format
@@ -29,8 +29,8 @@ B8 D1 FD BF 65 09 25 C1 88 37 C7 C1                                             
                                     FF FF FF FF                                                                                                             #RGBA if no material is applied,
                                                                                                                                                             #each channel is given as a normal byte
                                                 69 5B 78 BF EA EE B2 BD 17 AC 67 BE                                                                         #Vertex normals
-                                                                                    00 00 70 3F AA AA AA 3E 14 8E BA 3B                                     #Vertex texture coordinates
-                                                                                                                        2A A5 6C 3F 08 46 C3 BE 00 00 80 3F #Unknown float3
+                                                                                    00 00 70 3F AA AA AA 3E                                                 #Vertex texture coordinates
+                                                                                                            14 8E BA 3B 2A A5 6C 3F 08 46 C3 BE 00 00 80 3F #Vertex tangents
 EB 62 83 BF 9E 97 85 C1 58 EF C7 C1 FF FF FF FF F1 68 5C BF 63 AF 90 BE 5B 89 D8 BE 00 00 68 3F 56 55 D5 3E DB 59 DD B2 32 DB 54 3F DA 39 0E BF 00 00 80 3F 
 B7 D1 FD BF 11 8D 6F C1 BA 41 B3 C1 FF FF FF FF 34 2B 79 BF 0E 8C 02 BE A0 60 43 BE 00 00 68 3F AA AA AA 3E FE 14 76 B3 32 DB 54 3F D9 39 0E BF 00 00 80 3F 
 ED 62 83 BF 14 13 38 C1 96 32 DE C1 FF FF FF FF B4 6B 5C BF 31 4B 47 BE 9C 91 F0 BE 00 00 70 3F 56 55 D5 3E 7B 8B 8C B3 5F 83 6C 3F 13 EF C3 BE 00 00 80 3F 
