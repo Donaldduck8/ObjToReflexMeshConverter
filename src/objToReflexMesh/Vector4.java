@@ -31,7 +31,7 @@ public class Vector4 {
 	}
 	
 	public float[] getFloats() {
-		return new float[] {x,y};
+		return new float[] {x,y,z,w};
 	}
 	
 	public byte[] getBytes() {
