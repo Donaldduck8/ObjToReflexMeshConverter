@@ -14,8 +14,8 @@ public class Converter {
 	private static String messages = "";
 	
 	public static void main(String[] args) throws IOException {
-		System.out.println(".obj to .mesh converter 1.1 by Donald");
-		System.out.println("   https://github.com/Donaldduck8/");
+		System.out.println(".obj to .mesh converter 1.1.1 by Donald");
+		System.out.println("    https://github.com/Donaldduck8/");
 		System.out.println("=======================================");
 		System.out.println();
 		
