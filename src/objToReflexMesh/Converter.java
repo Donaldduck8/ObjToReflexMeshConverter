@@ -531,6 +531,8 @@ public class Converter {
 				line = line.replaceAll("  ", " ");
 			}
 			
+			lines.set(i, line);
+			
 			//If line is face and has more than 3 vertex combinations, triangulate
 			if(line.startsWith("f ")) {
 				String[] faceVertexCombinations = line.split(" ");
