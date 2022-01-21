@@ -1,5 +1,5 @@
 # ObjToReflexMeshConverter
-A Java program to convert Wavefront .obj files to Reflex .mesh files. This program requires at least Java 1.3.
+A Java program to convert Wavefront .obj files to Reflex .mesh files. This program requires the newest JDK.
 
 ## About
 The conversion is based on my reverse engineering of the Reflex .mesh file format. It supports vertex normals, vertex texture coordinates and groups. Curious mappers can view an exploded and annotated view of the .mesh file structure in "Reflex Mesh File Structure.txt".
